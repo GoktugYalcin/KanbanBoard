@@ -2,22 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   lists: [
-    {
-      listId: 0,
-      listLabel: "First List",
-      listItems: [0], //Card id [1,2,3]
-    },
-    {
-      listId: 1,
-      listLabel: "Second List",
-      listItems: [1], //Card id [1,2,3]
-    },
   ],
   cards: [
-    {
-      cardId: 0,
-      cardLabel: "First card",
-    },
   ],
 };
 
