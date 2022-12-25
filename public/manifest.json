@@ -1,0 +1,9 @@
+{
+  "short_name": "KanbanBoard",
+  "name": "A kanban board that u can use",
+  "icons": [],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
