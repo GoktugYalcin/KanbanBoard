@@ -23,6 +23,7 @@ const AddNew = ({ listId }) => {
       onChange={(e) => {
         setNewText(e.target.value);
       }}
+      autoFocus={true}
       onKeyDown={(e) => {
         if (e.key === "Enter") {
           dispatch(addCard({ listId: listId, newCardLabel: newText }));

@@ -26,6 +26,7 @@ const ListHeader = ({ listItem }) => {
         <input
           className="list-item_header-label"
           value={newText}
+          autoFocus={true}
           onChange={(e) => {
             setNewText(e.target.value);
           }}

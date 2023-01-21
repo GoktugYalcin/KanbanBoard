@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { addList, regenerateLists } from "./slices/mySlice";
 import ListContainer from "./components/ListContainer";
+import { motion } from "framer-motion";
 
 function App() {
   const dispatch = useDispatch();
@@ -21,17 +22,25 @@ function App() {
   }, [myLists, myCards, rootState]);
 
   return (
-    <div className="App-container">
+    <motion.div
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5 }}
+      className="App-container"
+    >
       <ListContainer />
-      <div
+      <motion.div
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}
         className="list-item_new"
         onClick={() => {
           dispatch(addList());
         }}
       >
         + Add List
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
 

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { changeCardLabel, removeCard } from "../slices/mySlice";
 import { useDispatch } from "react-redux";
+import { motion } from "framer-motion";
+
+import { changeCardLabel, removeCard } from "../slices/mySlice";
 
 const Card = ({ cardItem, listId }) => {
   const dispatch = useDispatch();
@@ -12,22 +14,33 @@ const Card = ({ cardItem, listId }) => {
   }, [cardItem]);
 
   return !isInput ? (
-    <div
-      onClick={() => {
-        setIsInput(true);
-      }}
+    <motion.div
+      key="card"
+      initial={{ opacity: 0, scale: 0.5 }}
+      exit={{ opacity: 0, scale: 0 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5 }}
       className="list-item_cards-item"
     >
-      <span className="list-item_cards-item_label">{cardItem.cardLabel}</span>
+      <span
+        className="list-item_cards-item_label"
+        onClick={() => {
+          setIsInput(true);
+        }}
+      >
+        {cardItem.cardLabel}
+      </span>
       <span
         className="list-item_cards-item_remove"
         onClick={() =>
-          dispatch(removeCard({ listId: listId, cardId: cardItem.cardId }))
+          setTimeout(() => {
+            dispatch(removeCard({ listId: listId, cardId: cardItem.cardId }));
+          }, 100)
         }
       >
         X
       </span>
-    </div>
+    </motion.div>
   ) : (
     <input
       className="list-item_cards-item_add-action"
@@ -35,6 +48,7 @@ const Card = ({ cardItem, listId }) => {
       onChange={(e) => {
         setNewText(e.target.value);
       }}
+      autoFocus={true}
       onKeyDown={(e) => {
         if (e.key === "Enter") {
           dispatch(
